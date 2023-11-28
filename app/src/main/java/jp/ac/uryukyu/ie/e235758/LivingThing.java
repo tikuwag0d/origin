@@ -2,7 +2,7 @@ package jp.ac.uryukyu.ie.e235758;
 
 public class LivingThing {
     private String name;
-    private int hitPoint;
+    private double hitPoint;
     private int attack;
     private boolean dead;
 
@@ -19,25 +19,25 @@ public class LivingThing {
         dead =state;
     }
     public String getName(){
-        return name;
+        return this.name;
     }
-    public void setHitPoint(int remainingHP){
-        hitPoint = remainingHP;
+    public void setHitPoint(double remainingHP){
+        this.hitPoint = remainingHP;
     }
-    public int getHitPoint(){
-        return hitPoint;
+    public double getHitPoint(){
+        return this.hitPoint;
     }
     public int getAttack(){
-        return attack;
+        return this.attack;
     }
     public void attack(LivingThing rival){
-        if (hitPoint >0){
+        if (getHitPoint() >0){
             int damage = (int)(Math.random() * attack);
             System.out.printf("%sの攻撃！%sに%dのダメージを与えた！！\n",name, rival.getName(),damage);
             rival.wounded(damage);
         }
     }
-    public void wounded(int damage){
+    public void wounded(double damage){
         hitPoint -= damage;
         if( hitPoint < 0 ) {
             dead = true;
